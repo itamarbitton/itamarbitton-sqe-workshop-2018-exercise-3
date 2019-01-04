@@ -31,7 +31,7 @@ $(document).ready(function () {
     $('#codeSubmissionButton').click(() => {
         let codeToParse = $('#codePlaceholder').val();
         let parsedCode = parseCode(codeToParse);
-        let paramsList = initiateFunctionArgs(parsedCode, $('#parametersHolder').val());
+        let paramsList = initiateFunctionArgs(parsedCode, $('#params').val());
         let funcToGraph = parsedCode['body'][0]['body'];
         let controlFlowGraph = esgraph(funcToGraph);
         visualizeGraph(controlFlowGraph, paramsList);

@@ -35,31 +35,33 @@
             <tr>
                 <td>
                     <div>
-                        <label>Enter code here</label>
+                        <label>Code To CFG:</label>
                     </div>
                 </td>
                 <td>
                     <div>
-                        <label>Parsed code here</label>
+                        <label>Control Flow Graph:</label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <div>
+                        <label>Parameters:</label>
+                    </div>
+                    <div>
+                        <textarea id="params" title="Enter code here"></textarea>
+                    </div>
+                    <div>
+                        <label>Enter code here</label>
+                    </div>
                     <div class="textAreaWrapper">
                         <textarea id="codePlaceholder" title="Enter code here"></textarea>
                     </div>
-                    <div>
-                        <label>Enter the params and const Value here</label>
-                    </div>
-                    <div>
-                        <textarea id="parametersHolder" title="Enter code here"></textarea>
-                    </div>
+
                 </td>
                 <td>
-                    <div class="textAreaWrapper">
-
-                    </div>
+                    <div id="parsedCode" title="Parse code"></div>
                 </td>
             </tr>
             <tr>
@@ -73,6 +75,6 @@
             </tr>
         </table>
         <script src="dist/bundle.js"></script>
-        <div id="parsedCode" title="Parse code"></div>
+
     </body>
 </html>
