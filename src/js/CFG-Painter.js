@@ -21,13 +21,22 @@ function nodePaint(n, params) {
     if(n.type !== 'exit' ){
         n.paint = true;
         if(n.normal){
-            params.push(escodegen.generate(n.astNode)+';');
+            let codeStr = escodegen.generate(n.astNode);
+            if (params.includes(codeStr + ';') && predDec(codeStr)){
+                codeStr= codeStr.substring(3);
+            }
+            params.push(codeStr+';');
             nodePaint(n.normal,params);
         }
         else{
             condPaint(n, params);
         }
     }
+}
+
+function predDec(code) {
+    let ans = !!(code.includes('let') || (code.includes('var')));
+    return ans;
 }
 
 

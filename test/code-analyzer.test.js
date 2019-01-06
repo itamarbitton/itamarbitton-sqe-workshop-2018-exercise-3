@@ -209,6 +209,27 @@ let test10Res = 'digraph cfg { forcelabels=true\n' +
     ' n1 -> n3 [label="false"]\n' +
     ' }';
 
+let test11 = 'function goo(x){\n' +
+    'while(true){\n' +
+    'if (x === 3)\n' +
+    'return x;\n' +
+    'x = x + 1;\n' +
+    '}\n' +
+    '}';
+let test11ArgumentsStrArray = ['let x = 0;'];
+let test11Res = 'digraph cfg { forcelabels=true\n' +
+    ' n0 [label="true", xlabel=0, shape=diamond,style = filled, fillcolor = green ]\n' +
+    ' n1 [label="let y = 1", xlabel=1, shape=rectangle,style = filled, fillcolor = green ]\n' +
+    ' n2 [label="x + y === 3", xlabel=2, shape=diamond,style = filled, fillcolor = green ]\n' +
+    ' n3 [label="return x", xlabel=3, shape=rectangle,style = filled, fillcolor = green ]\n' +
+    ' n4 [label="x = x + 1", xlabel=4, shape=rectangle,style = filled, fillcolor = green ]\n' +
+    ' n0 -> n1 [label="true"]\n' +
+    ' n1 -> n2 []\n' +
+    ' n2 -> n3 [label="true"]\n' +
+    ' n2 -> n4 [label="false"]\n' +
+    ' n4 -> n0 []\n' +
+    ' }';
+
 describe('Tests for third workshop', () => {
     it('test 1', () => {
         let dotGraph = fromCodeToGraph(test1, test1ArgumentsStrArray);
@@ -257,5 +278,9 @@ describe('Tests for third workshop', () => {
     it('test 10', () => {
         let dotGraph = fromCodeToGraph(test10, test10ArgumentsStrArray);
         assert.equal(dotGraph, test10Res);
+    });
+    it('test 11', () => {
+        let dotGraph = fromCodeToGraph(test11, test11ArgumentsStrArray);
+        assert.equal(dotGraph, test11Res);
     });
 });
