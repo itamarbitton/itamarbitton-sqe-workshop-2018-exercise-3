@@ -211,7 +211,8 @@ let test10Res = 'digraph cfg { forcelabels=true\n' +
 
 let test11 = 'function goo(x){\n' +
     'while(true){\n' +
-    'if (x === 3)\n' +
+    'let y = 1;\n' +
+    'if (x + y === 3)\n' +
     'return x;\n' +
     'x = x + 1;\n' +
     '}\n' +
